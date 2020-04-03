@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<properties resource="resource.properties" />
+	<typeAliases>
+		<!-- 给单个类配别名 -->
+		<!-- <typeAlias type="com.neuedu.mybatis.entity.Admin" alias="Admin" /> -->
+		<!-- 给包内所有类配别名 -->
+		<package name="com.fsClothes.pojo" />
+	</typeAliases>
+	<!-- <mappers>
+		<mapper resource="AdminMapper.xml" />
+		<package name="com.fsClothes.mapper"/>
+	</mappers> -->
+</configuration>
