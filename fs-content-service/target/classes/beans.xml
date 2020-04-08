@@ -4,6 +4,7 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:cache="http://www.springframework.org/schema/cache"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context
@@ -11,9 +12,10 @@
 		http://www.springframework.org/schema/aop
 		http://www.springframework.org/schema/aop/spring-aop.xsd
 		http://www.springframework.org/schema/tx
-		http://www.springframework.org/schema/tx/spring-tx.xsd">
-
-	<!-- 使用注解实现AOP -->
+		http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/cache
+		http://www.springframework.org/schema/cache/spring-cache.xsd">
+<!-- 使用注解实现AOP -->
 	<!-- 添加注解  -->
 	<context:annotation-config/>
 	<!-- 通过注解扫包 -->
@@ -94,5 +96,7 @@
 		</property>
 		<property name="connectionTimeout" value="${solr_connectionTimeout}"/>
 	</bean>
+	
+	
 	
 </beans>
