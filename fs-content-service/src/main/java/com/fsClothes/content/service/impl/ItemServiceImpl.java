@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.fsClothes.content.service.ItemService;
 import com.fsClothes.mapper.ItemMapper;
+import com.fsClothes.pojo.Product;
 import com.fsClothes.pojo.ProductImgPath;
+import com.fsClothes.pojo.SalesItem;
 
 /** 
 * @author MrDCG 
@@ -22,6 +24,18 @@ public class ItemServiceImpl implements ItemService {
 	@Override
 	public List<ProductImgPath> findImgPaths(int productId,int isShow) {
 		return itemMapper.findImgPaths(productId,isShow);
+	}
+	@Override
+	public Product findItemInfo(int productId) {
+		return itemMapper.findItemInfo(productId);
+	}
+	@Override
+	public List<Product> findHotProducts(Integer i) {
+		return itemMapper.findHotProducts(i);
+	}
+	@Override
+	public List<Product> findCategoryProducts(int i) {
+		return itemMapper.findCategoryProducts(i);
 	}
 
 }
