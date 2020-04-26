@@ -30,4 +30,5 @@
     <!--声明要暴露的服务接口-->
 	<dubbo:service interface="com.fsClothes.content.service.AdvertisementService" ref="advertisementServiceImpl"/>
 	<dubbo:service interface="com.fsClothes.content.service.ItemService" ref="itemServiceImpl"/>
+	<dubbo:service interface="com.fsClothes.content.service.CartService" ref="cartServiceImpl"/>
 </beans>
