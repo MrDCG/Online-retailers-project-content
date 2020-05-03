@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.fsClothes.content.service.CartService;
 import com.fsClothes.mapper.CartMapper;
 import com.fsClothes.pojo.CartItem;
+import com.fsClothes.pojo.CartItemVO;
 
 
 
@@ -36,7 +37,7 @@ public class CartServiceImpl implements CartService {
 		CartItem item = cartMapper.findByUserId(ci.getUserId(),ci.getProductId());
 			if(item!=null) {
 					//更新商品数量
-					cartMapper.updateCartItemPCount(ci.getPCount()+item.getPCount());
+					cartMapper.updateCartItemPCount(item.getId(),ci.getPCount()+item.getPCount());
 					return;
 			}
 		
@@ -57,5 +58,14 @@ public class CartServiceImpl implements CartService {
 	@Override
 	public void batchDelCartItems(String checkedId) {
 		cartMapper.batchDelCartItems(checkedId.split(","));
+	}
+	@Override
+	public List<CartItem> findCartItemsById(String checkedId) {
+		return cartMapper.findCartItemsById(checkedId.split(","));
+	}
+	@CacheEvict(value="redisCacheManager",key="'findCartItems'")
+	@Override
+	public void updatePCount(List<CartItemVO> ciVOs) {
+		cartMapper.updatePCount(ciVOs);
 	}
 }

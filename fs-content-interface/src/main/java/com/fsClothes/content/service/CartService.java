@@ -3,6 +3,7 @@ package com.fsClothes.content.service;
 import java.util.List;
 
 import com.fsClothes.pojo.CartItem;
+import com.fsClothes.pojo.CartItemVO;
 
 /**
  * @author MrDCG
@@ -32,5 +33,17 @@ public interface CartService {
 	 * @param checkedId
 	 */
 	void batchDelCartItems(String checkedId);
+	
+	/**
+	 * 根据传进来的id查找items
+	 * @param checkedId id字符串
+	 * @return item集合
+	 */
+	List<CartItem> findCartItemsById(String checkedId);
+	/**
+	 * 更新cartItem数量
+	 * @param ciVO id，PCount集合
+	 */
+	void updatePCount(List<CartItemVO> ciVO);
 	
 }

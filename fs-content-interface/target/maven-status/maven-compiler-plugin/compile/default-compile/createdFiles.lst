@@ -1,3 +1,4 @@
 com\fsClothes\content\service\CartService.class
+com\fsClothes\content\service\OrderService.class
 com\fsClothes\content\service\ItemService.class
 com\fsClothes\content\service\AdvertisementService.class

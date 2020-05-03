@@ -31,4 +31,5 @@
 	<dubbo:service interface="com.fsClothes.content.service.AdvertisementService" ref="advertisementServiceImpl"/>
 	<dubbo:service interface="com.fsClothes.content.service.ItemService" ref="itemServiceImpl"/>
 	<dubbo:service interface="com.fsClothes.content.service.CartService" ref="cartServiceImpl"/>
+	<dubbo:service interface="com.fsClothes.content.service.OrderService" ref="orderServiceImpl"/>
 </beans>
