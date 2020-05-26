@@ -4,6 +4,8 @@ package com.fsClothes.content.service;
 
 import java.util.List;
 
+import com.fsClothes.pojo.Comment;
+import com.fsClothes.pojo.Page;
 import com.fsClothes.pojo.Product;
 import com.fsClothes.pojo.ProductImgPath;
 import com.fsClothes.pojo.SalesItem;
@@ -39,6 +41,21 @@ public interface ItemService {
 	 * @return 商品信息
 	 */
 	List<Product> findCategoryProducts(int i);
+	/**
+	 * 查找所有评论
+	 * @param page 分页
+	 * @param productId 
+	 * @return 分页评论
+	 */
+	Page<Comment> findAllCommentByPage(Page<Comment> page, int productId);
+	/**
+	 * 查找商品
+	 * @param page 分页条件
+	 * @param keywords 关键字
+	 * @param categoryId 
+	 * @return 商品
+	 */
+	Page<Product> searchItems(Page<Product> page, String keywords, Integer categoryId);
 	
 
 }

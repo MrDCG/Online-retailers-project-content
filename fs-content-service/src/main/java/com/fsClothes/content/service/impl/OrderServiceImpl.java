@@ -10,11 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fsClothes.content.service.OrderService;
-import com.fsClothes.mapper.CartMapper;
 import com.fsClothes.mapper.OrderMapper;
 import com.fsClothes.pojo.Addressee;
 import com.fsClothes.pojo.CartItemVO;
 import com.fsClothes.pojo.Order;
+import com.fsClothes.pojo.OrderConditionVO;
+import com.fsClothes.pojo.OrderItemOV;
+import com.fsClothes.pojo.OrderVO;
+import com.fsClothes.pojo.Page;
 
 
 
@@ -47,6 +50,41 @@ public class OrderServiceImpl implements OrderService {
 	public void insertSalesOrder(Integer userId, Addressee addresseeinfo, String orderNo, int status) {
 		orderMapper.insertSalesOrder(userId,addresseeinfo,orderNo,status);
 		
+	}
+
+	@Override
+	public List<OrderItemOV> findOrderItems(Integer limit,Integer userId,Integer status) {
+		return orderMapper.findOrderItems(limit,userId,status);
+	}
+
+	@Override
+	public void updateOrderStatus(int status,String orderNo) {
+		orderMapper.updateOrderStatus(status,orderNo);
+		
+	}
+
+	@Override
+	public Page<OrderVO> findOrdersByPage(Page<OrderVO> page) {
+		page.setTotalRecord(orderMapper.findOrdersCount());
+		page.setList(orderMapper.findOrdersByPage(page.getStartIndex(), page.getPageSize()));
+		
+		return page;
+	}
+
+	@Override
+	public void orderDelete(String checkedId) {
+		orderMapper.orderDelete(checkedId.split(","));
+	}
+
+	@Override
+	public Page<OrderVO> getOrder(Page<OrderVO> page, OrderConditionVO orderConditionVO) {
+		
+    	
+    	page.setTotalRecord(orderMapper.findConditionCount(orderConditionVO));
+    	System.out.println(page.getTotalRecord());
+		page.setList(orderMapper.findCondition(page.getStartIndex(), page.getPageSize(),orderConditionVO));
+		
+		return page;
 	}
 	
 }

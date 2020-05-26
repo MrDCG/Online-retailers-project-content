@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.fsClothes.content.service.ItemService;
 import com.fsClothes.mapper.ItemMapper;
+import com.fsClothes.pojo.Comment;
+import com.fsClothes.pojo.Page;
 import com.fsClothes.pojo.Product;
 import com.fsClothes.pojo.ProductImgPath;
 import com.fsClothes.pojo.SalesItem;
@@ -36,6 +38,20 @@ public class ItemServiceImpl implements ItemService {
 	@Override
 	public List<Product> findCategoryProducts(int i) {
 		return itemMapper.findCategoryProducts(i);
+	}
+	@Override
+	public Page<Comment> findAllCommentByPage(Page<Comment> page,int productId) {
+		page.setTotalRecord(itemMapper.findAllCommenCount(productId));
+		page.setList(itemMapper.findAllComment(page.getStartIndex(), page.getPageSize(),productId));
+		
+		return page;
+	}
+	@Override
+	public Page<Product> searchItems(Page<Product> page, String keywords,Integer categoryId) {
+		page.setTotalRecord(itemMapper.searchItemCount(keywords,categoryId));
+		page.setList(itemMapper.searchItems(page.getStartIndex(), page.getPageSize(),keywords,categoryId));
+		
+		return page;
 	}
 
 }
